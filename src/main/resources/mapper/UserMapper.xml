@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blossom.sagittarius.dao.UserDao">
+    <resultMap type="User" id="User">
+        <result property="Id" column="Id"/>
+    </resultMap>
+
+    <select id="queryUserById" resultType="com.blossom.sagittarius.domain.security.User">
+         select * from user where Id = #{Id}
+   </select>
+</mapper>
