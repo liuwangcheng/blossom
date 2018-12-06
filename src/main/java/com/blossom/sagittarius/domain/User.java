@@ -1,8 +1,6 @@
-package com.blossom.sagittarius.domain.security;
+package com.blossom.sagittarius.domain;
 
-import com.blossom.sagittarius.domain.BaseDO;
-
-public class User extends BaseDO {
+public class User {
 
     private Integer Id;
     private String userName;

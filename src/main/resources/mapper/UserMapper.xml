@@ -4,11 +4,74 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blossom.sagittarius.dao.UserDao">
-    <resultMap type="User" id="User">
-        <result property="Id" column="Id"/>
-    </resultMap>
+    <resultMap type="com.blossom.sagittarius.domain.User" id="user">
+        <result column="Id" property="Id"/>
+        <result column="Username" property="userName"/>
+        <result column="Password" property="passWord"/>
+        <result column="FirstName" property="firstName"/>
+        <result column="LastName" property="lastName"/>
+        <result column="Email" property="Email"/>
+        <result column="Phone" property="Phone"/>
+        <result column="Enabled" property="Enabled"/>
+        <result column="UserRoles" property="userRoles"/>
+        <result column="CreditcardId" property="creditcardId"/>
 
-    <select id="queryUserById" resultType="com.blossom.sagittarius.domain.security.User">
-         select * from user where Id = #{Id}
-   </select>
+    </resultMap>
+    <select id="queryUserById" resultMap="user">
+        select * from user where Id = #{Id}
+    </select>
+
+    <select id="queryUserAll" resultMap="user">
+        select * from user
+    </select>
+
+    <insert id="insertUser" useGeneratedKeys="true" keyColumn="Id" keyProperty="Id"
+            parameterType="com.blossom.sagittarius.domain.User">
+        INSERT INTO user (
+        Id,
+        Username,
+        Password,
+        FirstName,
+        LastName,
+        Email,
+        Phone,
+        Enabled,
+        UserRoles,
+        CreditcardId
+        )
+        VALUES
+        (
+        null,
+        #{userName},
+        #{passWord},
+        #{firstName},
+        #{lastName},
+        #{Email},
+        #{Phone},
+        #{Enabled},
+        #{userRoles},
+        #{creditcardId}
+        );
+    </insert>
+
+    <update id="updateUser" parameterType="com.blossom.sagittarius.domain.User">
+        UPDATE user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName!=null">Username = #{userName},</if>
+            <if test="passWord!=null">Password = #{passWord},</if>
+            <if test="firstName!=null">FirstName = #{firstName},</if>
+            <if test="lastName!=null">LastName = #{lastName},</if>
+            <if test="Email!=null">Email = #{Email},</if>
+            <if test="Phone!=null">Phone = #{Phone},</if>
+
+        </trim>
+        WHERE
+        (Id = #{Id});
+    </update>
+
+    <delete id="deleteUserById" parameterType="Integer">
+        delete from user where Id=#{Id}
+    </delete>
+
+
 </mapper>
