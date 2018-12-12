@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blossom.sagittarius.dao.RoleDao">
+
+	<resultMap type="Role" id="roles">
+		<result property="roleId" column="role_id"/>
+		<result property="name" column="name"/>
+	</resultMap>
+	
+    <insert id="createRole" parameterType="Role">
+    	insert into role(name) values(#{name})
+    </insert>
+    
+    <insert id="createRoleForUser" parameterType="UserRole">
+    	insert into user_role(username, role_id) values(#{username}, #{roleId})
+    </insert>
+    
+    <select id="listByUsername" resultMap="roles">
+    	select * from role a inner join user_role b on a.role_id = b.role_id 
+    	where b.username = #{username} and b.date_delete is null
+    </select>
+</mapper>
