@@ -1,5 +1,9 @@
 package com.blossom.sagittarius.domain;
 
+import com.blossom.sagittarius.domain.security.UserRole;
+
+import java.util.Set;
+
 public class User {
 
     private Integer Id;
@@ -12,6 +16,14 @@ public class User {
     private String Enabled;
     private String userRoles;
     private Integer creditcardId;
+
+    public String getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(String userRoles) {
+        this.userRoles = userRoles;
+    }
 
     public Integer getId() {
         return Id;
@@ -77,13 +89,6 @@ public class User {
         Enabled = enabled;
     }
 
-    public String getUserRoles() {
-        return userRoles;
-    }
-
-    public void setUserRoles(String userRoles) {
-        this.userRoles = userRoles;
-    }
 
     public Integer getCreditcardId() {
         return creditcardId;

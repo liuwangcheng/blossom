@@ -21,11 +21,19 @@
         select * from user where Id = #{Id}
     </select>
 
-    <select id="queryUserAll" resultMap="user">
+    <select id="findByUsername" resultMap="user">
+        select * from user where Username = #{userName}
+    </select>
+
+    <select id="findByEmail" resultMap="user">
+        select * from user where Email = #{Email}
+    </select>
+
+    <select id="findAll" resultMap="user">
         select * from user
     </select>
 
-    <insert id="insertUser" useGeneratedKeys="true" keyColumn="Id" keyProperty="Id"
+    <insert id="saveUser" useGeneratedKeys="true" keyColumn="Id" keyProperty="Id"
             parameterType="com.blossom.sagittarius.domain.User">
         INSERT INTO user (
         Id,

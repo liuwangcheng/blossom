@@ -20,27 +20,37 @@ public class UserDaoTest {
     public void queryUserById() {
         System.out.print(userDao.queryUserById(1));
     }
+
     @Test
-    public void queryUserAll() {
-        List<User> userList = this.userDao.queryUserAll();
+    public void findByUsername() {
+        System.out.print(userDao.findByUsername("李小龙"));
+    }
+
+    @Test
+    public void findByEmail() {
+        System.out.print(userDao.findByEmail("1125485579@qq.com"));
+    }
+    @Test
+    public void findAll() {
+        List<User> userList = this.userDao.findAll();
         for (User user : userList) {
             System.out.println(user);
         }
     }
 
     @Test
-    public void insertUser() {
+    public void saveUser() {
         User user = new User();
-        user.setUserName("李小龙");
-        user.setPassWord("1234");
-        user.setFirstName("李");
-        user.setLastName("小龙");
+        user.setUserName("王龙");
+        user.setPassWord("12345");
+        user.setFirstName("王");
+        user.setLastName("龙");
         user.setEmail("18119615680@163.com");
-        user.setPhone(12345678);
-        user.setEnabled("1");
+        user.setPhone(12378);
+        user.setEnabled("0");
         user.setUserRoles("游客");
-        user.setCreditcardId(2);
-        this.userDao.insertUser(user);
+        user.setCreditcardId(1);
+        this.userDao.saveUser(user);
         System.out.println(user.getId());
     }
 
@@ -53,12 +63,13 @@ public class UserDaoTest {
         user.setLastName("德华");
         user.setEmail("1125485579@qq.com");
         user.setPhone(1234);
-        user.setId(2);
+        user.setId(4);
         this.userDao.updateUser(user);
+
     }
 
     @Test
     public void deleteUserById() {
-        this.userDao.deleteUserById(3);
+        this.userDao.deleteUserById(11);
     }
 }
