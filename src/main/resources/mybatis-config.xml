@@ -10,5 +10,11 @@
     </typeAliases>
     <mappers>
         <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/UserRoleMapper.xml"/>
+        <mapper resource="mapper/BookMapper.xml"/>
+        <mapper resource="mapper/ShoppingCartMapper.xml"/>
     </mappers>
+
+
+
 </configuration>

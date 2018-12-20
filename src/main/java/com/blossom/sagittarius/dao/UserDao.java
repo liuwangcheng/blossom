@@ -1,7 +1,8 @@
 package com.blossom.sagittarius.dao;
 
-import com.blossom.sagittarius.domain.User;
+import com.blossom.sagittarius.domain.security.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,21 +15,21 @@ public interface UserDao {
      * @param id
      * @return
      */
-    User queryUserById(Integer id);
+    User queryUserById(@Param("Id") Integer id);
 
     /**
      * 通过username查询
      * @param username
      * @return
      */
-    User findByUsername(String username);
+    User findByUsername(@Param("userName") String username);
 
     /**
      * 通过email查询
      * @param email
      * @return
      */
-    User findByEmail(String email);
+    User findByEmail(@Param("Email")String email);
 
 
     /**
@@ -53,6 +54,6 @@ public interface UserDao {
      * 根据id删除用户信息
      * @param id
      */
-    public int deleteUserById(Integer id);
+    public int deleteUserById(@Param("Id")Integer id);
 
 }

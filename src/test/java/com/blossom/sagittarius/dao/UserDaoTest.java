@@ -1,6 +1,6 @@
 package com.blossom.sagittarius.dao;
 
-import com.blossom.sagittarius.domain.User;
+import com.blossom.sagittarius.domain.security.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserDaoTest {
@@ -41,16 +40,16 @@ public class UserDaoTest {
     @Test
     public void saveUser() {
         User user = new User();
-        user.setUserName("王龙");
+        user.setUserName("王小龙");
         user.setPassWord("12345");
         user.setFirstName("王");
-        user.setLastName("龙");
+        user.setLastName("小龙");
         user.setEmail("18119615680@163.com");
         user.setPhone(12378);
         user.setEnabled("0");
         user.setUserRoles("游客");
         user.setCreditcardId(1);
-        this.userDao.saveUser(user);
+        userDao.saveUser(user);
         System.out.println(user.getId());
     }
 

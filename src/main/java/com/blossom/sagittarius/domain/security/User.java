@@ -1,4 +1,4 @@
-package com.blossom.sagittarius.domain;
+package com.blossom.sagittarius.domain.security;
 
 import com.blossom.sagittarius.domain.security.UserRole;
 

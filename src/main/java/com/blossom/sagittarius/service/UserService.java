@@ -1,8 +1,7 @@
 package com.blossom.sagittarius.service;
 
-import com.blossom.sagittarius.domain.User;
+import com.blossom.sagittarius.domain.security.User;
 import com.blossom.sagittarius.domain.security.UserRole;
-import org.springframework.stereotype.Service;
 
 import java.util.Set;
 

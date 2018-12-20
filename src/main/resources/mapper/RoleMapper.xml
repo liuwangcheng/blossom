@@ -14,9 +14,9 @@
     	insert into role(name) values(#{name})
     </insert>
     
-    <insert id="createRoleForUser" parameterType="UserRole">
+    <!--<insert id="createRoleForUser" parameterType="UserRole">
     	insert into user_role(username, role_id) values(#{username}, #{roleId})
-    </insert>
+    </insert>-->
     
     <select id="listByUsername" resultMap="roles">
     	select * from role a inner join user_role b on a.role_id = b.role_id 

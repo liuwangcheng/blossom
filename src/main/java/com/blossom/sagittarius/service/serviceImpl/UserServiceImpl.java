@@ -3,33 +3,34 @@ package com.blossom.sagittarius.service.serviceImpl;
 import com.blossom.sagittarius.dao.RoleDao;
 import com.blossom.sagittarius.dao.UserDao;
 import com.blossom.sagittarius.dao.UserRoleDao;
-import com.blossom.sagittarius.domain.User;
-import com.blossom.sagittarius.domain.security.Role;
+import com.blossom.sagittarius.domain.security.User;
 import com.blossom.sagittarius.domain.security.UserRole;
 import com.blossom.sagittarius.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.Set;
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
     @Autowired
     private RoleDao roleDao;
+    @Autowired
+    private UserRoleDao userRoleDao;
+
 
     @Override
     public User createUser(User user, Set<UserRole> userRoles) {
         User user1 = userDao.saveUser(user);
-        Set<UserRole> set = new HashSet<UserRole>();
-        UserRole userRole = new UserRole();
-        set.add(userRole);
+        for (UserRole userRole : userRoles) {
+            userRoleDao.insertById(userRole.getUserId(), userRole.getRoleId());
+        }
 
-
-
-        return null;
+        return user1;
     }
 
     @Override

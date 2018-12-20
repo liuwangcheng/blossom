@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blossom.sagittarius.dao.BookDao">
+    <resultMap type="com.blossom.sagittarius.domain.security.Book" id="book">
+        <result column="Id" property="Id"/>
+        <result column="Title" property="title"/>
+        <result column="Author" property="author"/>
+        <result column="Publisher" property="publisher"/>
+        <result column="PublicationDate" property="publicationDate"/>
+        <result column="Language" property="language"/>
+        <result column="Category" property="category"/>
+        <result column="NumberOfPages" property="numberOfPages"/>
+        <result column="Format" property="format"/>
+        <result column="ISBN" property="ISBN"/>
+        <result column="ShippingWeight" property="ShippingWeight"/>
+        <result column="ListPrice" property="ListPrice"/>
+        <result column="OurPrice" property="OurPrice"/>
+        <result column="Active" property="active"/>
+        <result column="Description" property="description"/>
+        <result column="InStockNumber" property="InStockNumber"/>
+    </resultMap>
+    <select id="findAll"  resultMap="book">
+        select * from book
+    </select>
+
+    <select id="findOne" resultMap="book">
+        select * from book where Id = #{Id}
+    </select>
+    <insert id="save" useGeneratedKeys="true" keyColumn="Id" keyProperty="Id"
+            parameterType="com.blossom.sagittarius.domain.security.Book">
+        INSERT into book(
+        Id,
+        Title,
+        Author,
+        Publisher,
+        PublicationDate,
+        Language,
+        Category,
+        NumberOfPages,
+        Format,
+        ISBN,
+        ShippingWeight,
+        ListPrice,
+        OurPrice,
+        Active,
+        Description,
+        InStockNumber
+        )values (
+        null,
+        #{title},
+        #{author},
+        #{publisher},
+        #{publicationDate},
+        #{language},
+        #{category},
+        #{numberOfPages},
+        #{format},
+        #{ISBN},
+        #{ShippingWeight},
+        #{ListPrice},
+        #{OurPrice},
+        #{active},
+        #{description},
+        #{InStockNumber}
+        );
+    </insert>
+    <select id="blurrySearch"  resultMap="book">
+        select * from book where Title = #{title}
+    </select>
+    <!--parameterType="java.lang.long"-->
+    <delete id="removeOne" >
+        delete from user where Id=#{Id}
+    </delete>
+</mapper>
