@@ -29,6 +29,7 @@ public class ShoppingCartDaoTest {
     @Test
     public void clearShoppingCart() {
         ShoppingCart shoppingCart = new ShoppingCart();
+
         shoppingCartDao.clearShoppingCart(shoppingCart);
     }
 }
