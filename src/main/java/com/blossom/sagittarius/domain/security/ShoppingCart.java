@@ -3,16 +3,16 @@ package com.blossom.sagittarius.domain.security;
 import java.math.BigDecimal;
 
 public class ShoppingCart {
-    private Integer Id;
+    private int Id;
     private Integer userId;
     private Integer cartItemId;
     private BigDecimal grandTotal;
 
-    public Integer getId() {
+    public int getId() {
         return Id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         Id = id;
     }
 

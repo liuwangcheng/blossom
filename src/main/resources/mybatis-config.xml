@@ -9,10 +9,15 @@
         <package name="com.blossom.sagittarius.domain.security"/>
     </typeAliases>
     <mappers>
+
         <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/UserRoleMapper.xml"/>
         <mapper resource="mapper/BookMapper.xml"/>
         <mapper resource="mapper/ShoppingCartMapper.xml"/>
+        <mapper resource="mapper/CartItemMapper.xml"/>
+        <mapper resource="mapper/UserPaymentMapper.xml"/>
+        <mapper resource="mapper/UserShippingMapper.xml"/>
+        <mapper resource="mapper/OrderMapper.xml"/>
     </mappers>
 
 

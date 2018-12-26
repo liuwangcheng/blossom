@@ -2,7 +2,7 @@ package com.blossom.sagittarius.domain.security;
 
 import java.util.Date;
 
-public class Userpayment {
+public class UserPayment {
     private Integer Id;
     private String cardNumber;
     private Date expiringDate;
@@ -51,7 +51,7 @@ public class Userpayment {
 
     @Override
     public String toString() {
-        return "Userpayment{" +
+        return "UserPayment{" +
                 "Id=" + Id +
                 ", cardNumber='" + cardNumber + '\'' +
                 ", expiringDate=" + expiringDate +

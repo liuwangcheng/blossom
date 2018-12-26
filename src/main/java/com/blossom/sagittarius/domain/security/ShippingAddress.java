@@ -1,9 +1,10 @@
 package com.blossom.sagittarius.domain.security;
 
-public class Shippingaddress {
+public class ShippingAddress {
     private Integer Id;
     private String Street;
     private String City;
+    private String State;
     private String Country;
     private Integer zipCode;
 
@@ -31,6 +32,14 @@ public class Shippingaddress {
         City = city;
     }
 
+    public String getState() {
+        return State;
+    }
+
+    public void setState(String state) {
+        State = state;
+    }
+
     public String getCountry() {
         return Country;
     }
@@ -49,10 +58,11 @@ public class Shippingaddress {
 
     @Override
     public String toString() {
-        return "Shippingaddress{" +
+        return "ShippingAddress{" +
                 "Id=" + Id +
                 ", Street='" + Street + '\'' +
                 ", City='" + City + '\'' +
+                ", State='" + State + '\'' +
                 ", Country='" + Country + '\'' +
                 ", zipCode=" + zipCode +
                 '}';

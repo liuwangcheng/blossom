@@ -1,11 +1,20 @@
 package com.blossom.sagittarius.domain.security;
 
-public class Cartitem {
+public class CartItem {
+    private long Id;
     private Integer bookId;
     private Integer shippingCartId;
-    private Integer Qty;
+    private int Qty;
     private String Subtotal;
     private Integer orderId;
+
+    public long getId() {
+        return Id;
+    }
+
+    public void setId(long id) {
+        Id = id;
+    }
 
     public Integer getBookId() {
         return bookId;
@@ -23,11 +32,11 @@ public class Cartitem {
         this.shippingCartId = shippingCartId;
     }
 
-    public Integer getQty() {
+    public int getQty() {
         return Qty;
     }
 
-    public void setQty(Integer qty) {
+    public void setQty(int qty) {
         Qty = qty;
     }
 
@@ -49,8 +58,9 @@ public class Cartitem {
 
     @Override
     public String toString() {
-        return "Cartitem{" +
-                "bookId=" + bookId +
+        return "CartItem{" +
+                "Id=" + Id +
+                ", bookId=" + bookId +
                 ", shippingCartId=" + shippingCartId +
                 ", Qty=" + Qty +
                 ", Subtotal='" + Subtotal + '\'' +
