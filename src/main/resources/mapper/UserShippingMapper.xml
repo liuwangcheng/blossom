@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blossom.sagittarius.dao.UserShippingDao">
+    <resultMap type="com.blossom.sagittarius.domain.security.UserShipping" id="userShipping">
+        <result column="Id" property="Id"/>
+        <result column="Street" property="Street"/>
+        <result column="City" property="City"/>
+        <result column="State" property="State"/>
+        <result column="Country" property="Country"/>
+        <result column="ZipCode" property="zipCode"/>
+    </resultMap>
+    <select id="findById" resultMap="userShipping">
+        select * from usershipping where Id = #{Id}
+    </select>
+
+    <delete id="removeById">
+        delete from usershipping where Id = #{Id}
+    </delete>
+</mapper>

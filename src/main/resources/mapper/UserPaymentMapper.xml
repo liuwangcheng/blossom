@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blossom.sagittarius.dao.UserPaymentDao">
+    <resultMap type="com.blossom.sagittarius.domain.security.UserPayment" id="userPayment">
+        <result column="Id" property="Id"/>
+        <result column="CardNumber" property="cardNumber"/>
+        <result column="ExpiringDate" property="expiringDate"/>
+        <result column="CVC" property="CVC"/>
+        <result column="HolderName" property="holderName"/>
+    </resultMap>
+    <select id="findById" resultMap="userPayment">
+        select * from userpayment where Id = #{Id}
+    </select>
+
+    <delete id="removeById">
+        delete from userpayment where Id=#{Id}
+    </delete>
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blossom.sagittarius.dao.OrderDao">
+    <resultMap type="com.blossom.sagittarius.domain.security.Order" id="order">
+        <result column="Id" property="Id"/>
+        <result column="OrderDate" property="orderDate"/>
+        <result column="ShippingDate" property="shippingDate"/>
+        <result column="OrderStatus" property="orderStatus"/>
+        <result column="OrderDetailsId" property="orderDetailsId"/>
+        <result column="ShoppingCartId" property="shippingCartId"/>
+        <result column="ShippingAddressId" property="ShippingAddressId"/>
+        <result column="BillingAddressId" property="billingAddressId"/>
+        <result column="Total" property="Total"/>
+        <result column="PaymentId" property="PaymentId"/>
+        <result column="CartItemId" property="CartItemId"/>
+    </resultMap>
+    <insert id="createOrder" useGeneratedKeys="true" keyColumn="Id" keyProperty="Id"
+            parameterType="com.blossom.sagittarius.domain.security.Order">
+        INSERT INTO order (
+        Id,
+        OrderDate,
+        ShippingDate,
+        OrderStatus,
+        OrderDetailsId,
+        ShoppingCartId,
+        ShippingAddressId,
+        BillingAddressId,
+        Total,
+        PaymentId,
+        CartItemId
+        )
+        VALUES
+        (
+        null,
+        #{orderDate},
+        #{shippingDate},
+        #{orderStatus},
+        #{orderDetailsId},
+        #{shippingCartId},
+        #{ShippingAddressId},
+        #{billingAddressId},
+        #{Total},
+        #{PaymentId},
+        #{CartItemId}
+        );
+    </insert>
+</mapper>

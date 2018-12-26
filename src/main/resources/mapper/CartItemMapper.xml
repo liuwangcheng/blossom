@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blossom.sagittarius.dao.CartItemDao">
+    <resultMap type="com.blossom.sagittarius.domain.security.CartItem" id="cartItem">
+        <result column="Id" property="Id"/>
+        <result column="BookId" property="bookId"/>
+        <result column="ShoppingCartId" property="shippingCartId"/>
+        <result column="Qty" property="Qty"/>
+        <result column="Subtotal" property="Subtotal"/>
+        <result column="OrderId" property="orderId"/>
+    </resultMap>
+    <insert id="addBookToCartItem" useGeneratedKeys="true" keyColumn="Id" keyProperty="Id"
+            parameterType="com.blossom.sagittarius.domain.security.CartItem">
+        INSERT into cartitem(
+        Id,
+        BookId,
+        ShoppingCartId,
+        Qty,
+        Subtotal,
+        OrderId
+        )values (
+        null,
+        (select book.Id from book where Title = #{title}),
+        (select Id from shoppingcart where UserId = (select Id from user where Username = #{userName})),
+        #{Qty},
+        #{Subtotal},
+        #{orderId}
+        );
+    </insert>
+    <select id="findByShoppingCartId" resultMap="cartItem">
+        select * from cartitem where ShoppingCartId
+    </select>
+    <select id="findById" resultMap="cartItem">
+        select * from cartitem where Id = #{Id}
+    </select>
+    <insert id="save" useGeneratedKeys="true" keyColumn="Id" keyProperty="Id"
+            parameterType="com.blossom.sagittarius.domain.security.CartItem">
+        INSERT INTO  cartitem(
+        Id,
+        BookId,
+        ShoppingCartId,
+        Qty,
+        Subtotal,
+        OrderId
+        )
+        VALUES
+        (
+        null,
+        #{bookId},
+        #{shippingCartId},
+        #{Qty},
+        #{Subtotal},
+        #{orderId}
+        );
+    </insert>
+    <update id="updateCartItem" parameterType="com.blossom.sagittarius.domain.security.CartItem">
+        UPDATE cartitem
+        <trim prefix="set" suffixOverrides=",">
+            <if test="bookId!=null">BookId = #{bookId},</if>
+            <if test="shippingCartId!=null">ShoppingCartId = #{shippingCartId},</if>
+            <if test="Qty!=null">Qty = #{Qty},</if>
+            <if test="Subtotal!=null">Subtotal = #{Subtotal},</if>
+            <if test="orderId!=null">OrderId = #{orderId},</if>
+
+        </trim>
+        WHERE
+        (Id = #{Id});
+    </update>
+    <delete id="removeCartItem" parameterType="com.blossom.sagittarius.domain.security.CartItem">
+        delete from cartitem
+    </delete>
+
+</mapper>
